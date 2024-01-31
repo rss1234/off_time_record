@@ -11,3 +11,6 @@ Record off time, and show it on the desktop of windows.
 双击需要更改的日期，即可进行更改；
 左键选中需要删除的行，单击右键进行删除。
 
+如何设置程序开机自启：
+win+R  -->  `shell:startup`  -->  右键新建快捷方式  -->  链接到file_name.exe文件中 [DONE]
+
