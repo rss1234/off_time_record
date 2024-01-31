@@ -142,22 +142,22 @@ def autosize_treeview_columns(treeview):
 # EXE package
 ######################################################
 def create_image(width, height, color1, color2):
-    # 创建一个空白图像，初始化为透明背景
-    image = Image.new('RGB', (width, height), color1)
-    dc = ImageDraw.Draw(image)
-    dc.rectangle(
-        [width // 2, 0, width, height // 2],
-        fill=color2)
-    dc.rectangle(
-        [0, height // 2, width // 2, height],
-        fill=color2)
+    logo_path = "app_logo.png"
+    if os.path.exists(logo_path):
+        image = Image.open("app_logo.png")
+    else:
+        # 创建一个空白图像，初始化为透明背景
+        image = Image.new('RGB', (width, height), color1)
+        dc = ImageDraw.Draw(image)
+        dc.rectangle([width // 2, 0, width, height // 2], fill=color2)
+        dc.rectangle([0, height // 2, width // 2, height], fill=color2)
     return image
 
 
 def create_icon():
     icon_image = create_image(64, 64, 'black', 'blue')
     icon_menu = (item('还原', show_app), item('关闭', quit_app))
-    icon = pystray.Icon("app_icon", icon_image, "我的应用", icon_menu)
+    icon = pystray.Icon("app_icon", icon_image, "调休时长计算器", icon_menu)
     return icon
 
 
@@ -184,7 +184,12 @@ app_name = "offTimeRecord_tk"
 file_name = "data.txt"
 file_path = f"C:\\Users\\{username}\\AppData\\Local\\{app_name}\\{file_name}"
 
+# create APP folder
+if not os.path.exists(os.path.dirname(file_path)):
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    print("System Folder Created.")
 minimized_size = "200x50"
+
 normal_size = "300x300"
 
 root = tk.Tk()
