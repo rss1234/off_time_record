@@ -5,3 +5,9 @@ Record off time, and show it on the desktop of windows.
 
 在对应文件目录下，使用命令`pyinstaller --onefile --windowed --icon=app_logo.png exe_file.py`将.py文件编译为.exe可执行程序。
 
+程序启动后会自动进入后台。
+
+操作方式：
+双击需要更改的日期，即可进行更改；
+左键选中需要删除的行，单击右键进行删除。
+
